@@ -11,3 +11,11 @@ chef_server_url          "https://api.opscode.com/organizations/maplestar"
 cache_type               'BasicFile'
 cache_options( :path => "#{ENV['HOME']}/.chef/checksums" )
 cookbook_path            ["#{current_dir}/../cookbooks"]
+
+# for aws/ec2
+# **** Set environment vars AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY rather than checking literal values to a public github
+knife[:aws_access_key_id] = ENV['AWS_ACCESS_KEY_ID']
+knife[:aws_secret_access_key] = ENV['AWS_SECRET_ACCESS_KEY']
+knife[:region] = "eu-west-1"
+knife[:availability_zone] = "eu-west-1"
+knife[:flavor] = "t1.micro"
